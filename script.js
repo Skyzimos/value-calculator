@@ -181,7 +181,7 @@ document.addEventListener('__share_data', (__shared_data) => {
 
         // Step 2: If no additional fields, return all values
         if (additionalFields.length === 0) {
-            return formatPetData(pet, additionalFields); // Format the pet data for the user
+            return pet; // Format the pet data for the user
         }
 
         // Step 3: Generate all combinations of the additional fields
