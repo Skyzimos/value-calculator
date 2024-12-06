@@ -285,4 +285,51 @@ document.addEventListener('__share_data', (__shared_data) => {
         let result = findPetValuesFromInput(document.getElementById('petInput').value, pets);
         displayResult(result);
     }
+
+    var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+    var SpeechGrammarList = SpeechGrammarList || window.webkitSpeechGrammarList;
+    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+
+    // Create the speech recognition object
+    var recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    // Target the text input or textarea where the speech will be transcribed
+    var textInput = document.querySelector('#petInput'); // Replace with the ID of your input box
+
+    // Event listener to start speech recognition on click
+    document.body.onclick = function () {
+        recognition.start();
+        console.log('Ready to receive speech input.');
+    }
+
+    // When the speech is recognized
+    recognition.onresult = function (event) {
+        // Retrieve the text from the speech result
+        var transcript = event.results[0][0].transcript;
+        console.log('Result received: ' + transcript + '.');
+
+        // Insert the recognized text into the text input
+        textInput.value = transcript;
+        console.log('Confidence: ' + event.results[0][0].confidence);
+    }
+
+    // When speech input ends
+    recognition.onspeechend = function () {
+        recognition.stop();
+    }
+
+    // In case the speech is not recognized
+    recognition.onnomatch = function (event) {
+        console.log("I didn't recognize that input.");
+    }
+
+    // Handle errors
+    recognition.onerror = function (event) {
+        console.log('Error occurred in recognition: ' + event.error);
+    }
+
 });
