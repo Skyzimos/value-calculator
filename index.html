@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet Value Finder</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Style for the input box */
+    #petInput {
+        width: 300px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        position: absolute;
+        background: transparent;
+        color: black;
+        z-index: 2;
+    }
+
+    #suggestion-input {
+        width: 300px;
+        padding: none;
+        position: absolute;
+        background-color: white;
+        color: #ccc;
+        z-index: 1;
+        font-size: 16px;
+    }
+
+    #suggestions {
+        font-size: 14px;
+        color: #ccc;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    /* Optionally, add styles for the suggestion box (can be hidden initially) */
+    #suggestions.show {
+        display: block;
+    }
+
+    .holder {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Adopt Me Pet Value Finder</h1>
+    <div class="holder">
+        <input type="text" id="petInput" placeholder="Type pet name..." />
+        <input type="text" id="suggestion-input" placeholder="" />    
+    </div>
+    <button id="valuebutton">Find Value</button>
+    <div id="result"></div>
+  </div>
+  <script src="script.js"></script>
+  <script src="values.js"></script>
+</body>
+</html>
