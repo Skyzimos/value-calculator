@@ -287,8 +287,6 @@ document.addEventListener('__share_data', (__shared_data) => {
     }
 
     var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
-    var SpeechGrammarList = SpeechGrammarList || window.webkitSpeechGrammarList;
-    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
 
     // Create the speech recognition object
     var recognition = new SpeechRecognition();
